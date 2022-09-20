@@ -21,7 +21,6 @@ class PhoneNumberPage extends StatelessWidget {
         ),
       ),
       initialCountryCode: 'SA',
-      onSubmitted: (String phoneNumber) {},
     );
   }
 }
