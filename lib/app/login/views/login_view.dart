@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_u/app/login/controllers/login_controller.dart';
-import 'package:quiz_u/app/login/views/pages/name_page.dart';
 import 'package:quiz_u/app/login/views/pages/phone_nymber_page.dart';
 import 'package:quiz_u/app/login/views/pages/pin_code_page.dart';
 
@@ -60,9 +59,9 @@ class _LoginViewState extends State<LoginView> {
                   PinCodePage(
                     controller: controller,
                   ),
-                  NamePage(
-                    controller: controller,
-                  ),
+                  // NamePage(
+                  //   controller: controller,
+                  // ),
                 ],
               ),
             ),
