@@ -12,10 +12,12 @@ dependencies:
   intl_phone_field: ^3.1.0
   responsive_framework: ^0.2.0
   http: ^0.13.5
+  isar: ^3.0.0
+  isar_flutter_libs: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
 flutter:
   uses-material-design: true
