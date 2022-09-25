@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_u/app/login/views/login_view.dart';
+import 'package:quiz_u/core/database/isar_db.dart';
 
 class SplashScreenController {
   late BuildContext context;
@@ -11,6 +12,7 @@ class SplashScreenController {
   void preLunch(){
     Future.wait(
       [
+        IsarDB.initDB(),
         Future.delayed(
           const Duration(
             milliseconds: 500,
