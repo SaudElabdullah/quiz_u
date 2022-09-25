@@ -21,7 +21,7 @@ class PinCodePage extends StatelessWidget {
         validator: controller.smsValidator,
         appContext: context,
         autoFocus: true,
-        autoDisposeControllers: true,
+        autoDisposeControllers: false,
         length: 4,
         obscureText: false,
         animationType: AnimationType.scale,
@@ -50,9 +50,6 @@ class PinCodePage extends StatelessWidget {
         ],
         enableActiveFill: true,
         controller: controller.smsCodeController,
-        onCompleted: (value) {
-          controller.navigateToNextPage();
-        },
         onChanged: (value) {},
         beforeTextPaste: (text) {
           return true;

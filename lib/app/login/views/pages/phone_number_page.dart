@@ -12,15 +12,20 @@ class PhoneNumberPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntlPhoneField(
-      controller: controller.phoneController,
-      decoration: const InputDecoration(
-        labelText: 'Phone Number',
-        border: OutlineInputBorder(
-          borderSide: BorderSide(),
-        ),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: 10,
       ),
-      initialCountryCode: 'SA',
+      child: IntlPhoneField(
+        controller: controller.phoneController,
+        decoration: const InputDecoration(
+          labelText: 'Phone Number',
+          border: OutlineInputBorder(
+            borderSide: BorderSide(),
+          ),
+        ),
+        initialCountryCode: 'SA',
+      ),
     );
   }
 }
