@@ -8,11 +8,13 @@ class User {
   String name;
   String token;
   String score;
+  String mobile;
 
   User({
     required this.name,
     required this.token,
     required this.score,
+    required this.mobile,
   });
 
   @override
@@ -20,35 +22,42 @@ class User {
       identical(this, other) ||
       (other is User &&
           runtimeType == other.runtimeType &&
+          id == other.id &&
           name == other.name &&
           token == other.token &&
-          score == other.score);
+          score == other.score &&
+          mobile == other.mobile);
 
   @override
-  int get hashCode => name.hashCode ^ token.hashCode ^ score.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ token.hashCode ^ score.hashCode ^ mobile.hashCode;
 
   @override
   String toString() {
-    return 'User{name: $name, token: $token, score: $score,}';
+    return 'User{id: $id, name: $name, token: $token, score: $score, mobile: $mobile,}';
   }
 
   User copyWith({
+    Id? id,
     String? name,
     String? token,
     String? score,
+    String? mobile,
   }) {
     return User(
       name: name ?? this.name,
       token: token ?? this.token,
       score: score ?? this.score,
+      mobile: mobile ?? this.mobile,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'name': name,
-      'token': token,
-      'score': score,
+      'id': this.id,
+      'name': this.name,
+      'token': this.token,
+      'score': this.score,
+      'mobile': this.mobile,
     };
   }
 
@@ -57,6 +66,7 @@ class User {
       name: map['name'] as String,
       token: map['token'] as String,
       score: map['score'] as String,
+      mobile: map['mobile'] as String,
     );
   }
 }
