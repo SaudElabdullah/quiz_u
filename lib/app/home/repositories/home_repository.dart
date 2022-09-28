@@ -1,14 +1,14 @@
 import 'dart:developer';
 
-import 'package:quiz_u/app/leaderboard/models/leaderboard.dart';
-import 'package:quiz_u/app/leaderboard/services/leaderboard_services.dart';
+import 'package:quiz_u/app/home/models/leaderboard.dart';
+import 'package:quiz_u/app/home/services/home_services.dart';
 
-class LeaderboardRepository {
-  LeaderboardRepository._();
+class HomeRepository {
+  HomeRepository._();
 
-  static LeaderboardRepository? _instance;
+  static HomeRepository? _instance;
 
-  static LeaderboardRepository get instance => _instance ??= LeaderboardRepository._();
+  static HomeRepository get instance => _instance ??= HomeRepository._();
   List<Leaderboard> _leaderboards = [];
 
   Future<void> init(String token) async {
@@ -17,7 +17,7 @@ class LeaderboardRepository {
 
   Future<List<Leaderboard>> getLeaderboards(String token ,{bool refresh = false}) async {
     if (refresh || _leaderboards.isEmpty) {
-      _leaderboards = await LeaderboardServices.getLeaderboard(token);
+      _leaderboards = await HomeServices.getLeaderboard(token);
     }
     else {
       log("Leaderboards already in cache");

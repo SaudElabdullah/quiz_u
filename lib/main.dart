@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_u/core/views/splash_screen.dart';
+import 'package:quiz_u/core/wrapper.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           ResponsiveBreakpoint.resize(1000, name: DESKTOP),
         ],
       ),
-      home: const SplashScreen(),
+      home: const Wrapper(),
     );
   }
 }

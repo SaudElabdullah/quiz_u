@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_u/app/home/views/home_view.dart';
 import 'package:quiz_u/app/login/models/user.dart';
 import 'package:quiz_u/app/login/services/login_services.dart';
-import 'package:quiz_u/app/profile/services/profile_services.dart';
 import 'package:quiz_u/core/database/isar_db.dart';
 import 'package:quiz_u/core/utils/pop_up.dart';
-import 'package:quiz_u/core/wrapper.dart';
 
 class LoginController {
   late PageController pageController;
@@ -68,7 +67,7 @@ class LoginController {
           ]).then((value) async {
             if (value[0]['success'] as bool) {
               if (value[0]['name'] != null) {
-                User info = await ProfileServices.getUserInformation(value[0]['token']);
+                User info = await LoginServices.getUserInformation(value[0]['token']);
                 IsarDB.addUser(
                   value[0]['name'],
                   value[0]['token'],
@@ -78,7 +77,7 @@ class LoginController {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Wrapper(),
+                    builder: (context) => const HomeView(),
                   ),
                 );
               } else {
@@ -123,12 +122,12 @@ class LoginController {
               messageTwo: 'Please enter your name',
             );
           } else {
-            IsarDB.updateUserName(nameController.text);
+            await IsarDB.updateUserName(nameController.text);
             LoginServices.registerName(nameController.text, userToken);
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const Wrapper(),
+                builder: (context) => const HomeView(),
               ),
             );
           }

@@ -58,4 +58,8 @@ class Question {
       answer: map['correct'] as String,
     );
   }
+
+  bool isAnswerCorrect(String answer){
+    return answer == this.answer;
+  }
 }

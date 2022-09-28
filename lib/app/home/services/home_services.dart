@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:quiz_u/app/leaderboard/models/leaderboard.dart';
+import 'package:quiz_u/app/home/models/leaderboard.dart';
 
-class LeaderboardServices {
+class HomeServices {
   static Future<List<Leaderboard>> getLeaderboard(String token) async {
     var headers = {
       'Authorization':

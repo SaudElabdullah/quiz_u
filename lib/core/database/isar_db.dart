@@ -15,7 +15,17 @@ class IsarDB {
   }
 
   static Future<User> getUser() async {
-    return (await isar.users.where().findAll()).first;
+    List<User> users = await isar.users.where().findAll();
+    if (users.isNotEmpty) {
+      return users.first;
+    } else {
+      return User(
+        name: '',
+        token: '',
+        score: '',
+        mobile: '',
+      );
+    }
   }
 
   static void addUser(
@@ -37,13 +47,11 @@ class IsarDB {
 
   static Future<void> deleteUser() async {
     await isar.writeTxn(() async {
-      final int userId = (await getUser()).id;
-
-      isar.users.delete(userId);
+      await IsarDB.isar.users.clear();
     });
   }
 
-  static void updateUserName(
+  static Future<void> updateUserName(
     String name,
   ) async {
     final User user = await getUser();
@@ -68,6 +76,11 @@ class IsarDB {
   ) async {
     User user = await getUser();
     user.score = score;
+    if (user.scores != null) {
+      user.scores!.add(score);
+    } else {
+      user.scores = [score];
+    }
     await isar.writeTxn(() async {
       await isar.users.put(user);
     });

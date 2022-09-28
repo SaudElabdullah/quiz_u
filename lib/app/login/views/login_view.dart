@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:quiz_u/app/login/controllers/login_controller.dart';
 import 'package:quiz_u/app/login/views/pages/name_page.dart';
 import 'package:quiz_u/app/login/views/pages/phone_number_page.dart';
 import 'package:quiz_u/app/login/views/pages/pin_code_page.dart';
-import 'package:lottie/lottie.dart';
+import 'package:quiz_u/core/animations/bounce.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -27,6 +28,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           alignment: Alignment.center,
@@ -40,6 +42,7 @@ class _LoginViewState extends State<LoginView> {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 30,
+                      color: Color(0xFF3c3c3b),
                     ),
                   ),
                   Icon(
@@ -74,24 +77,28 @@ class _LoginViewState extends State<LoginView> {
               bottom: 200,
               right: 80,
               left: 80,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    Colors.blueGrey,
-                  ),
-                ),
-                onPressed: () async {
+              child: Bounce(
+                function: () async {
                   await controller.loginController();
                 },
-                child: const SizedBox(
-                  height: 45,
-                  child: Center(
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                      ),
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 15,
+                    horizontal: 30,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey,
+                    borderRadius: BorderRadius.circular(
+                      15,
+                    ),
+                  ),
+                  child: Text(
+                    'Next',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 17,
+                      color: Colors.white,
                     ),
                   ),
                 ),
